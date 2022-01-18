@@ -65,11 +65,10 @@ class screenShow():
                         score += 5
                         enemy.kill()
                         bullet.kill()
-            if score%5 == 0 and enemySpawnSpeed-30 > 0:
-                enemySpawnSpeed -= 30
+            if score%5 == 0 and enemySpawnSpeed >= 90:
+                enemySpawnSpeed -= 10
                 pygame.time.set_timer(ADDENEMY, enemySpawnSpeed)
                 score += 1
-                print(enemySpawnSpeed)
 
             font = pygame.font.Font(None, 74)
             text = font.render(str(score), 1, (255,255,255))
