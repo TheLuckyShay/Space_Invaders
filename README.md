@@ -6,7 +6,7 @@ Current tasks:
     Create Pause screen
     Create boss for level 1
     Draw out assets for:
-        Player
+        ~~Playe~~
         Enemies
         Background
     Add level music

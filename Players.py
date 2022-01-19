@@ -5,7 +5,8 @@ from pygame.constants import (
     K_UP,
     K_LEFT,
     K_RIGHT,
-    K_SPACE
+    K_SPACE,
+    RLEACCEL
 )
 
 SCREEN_WIDTH = 1000
@@ -14,8 +15,8 @@ SCREEN_HEIGHT = 650
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.Surface((15, 50))
-        self.surf.fill((255, 255, 255))
+        self.surf = pygame.image.load("./assets/Ship_1_Red.png").convert()
+        #self.surf.set_colorkey((255,255,255),RLEACCEL)
         self.rect = self.surf.get_rect(center = (SCREEN_WIDTH/2 - self.surf.get_width()/2, SCREEN_HEIGHT/2))
         self.shootDelay = 20
         self.shootTimer = 0
