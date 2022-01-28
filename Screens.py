@@ -15,6 +15,9 @@ class screenShow():
         self.level = 1
     
     def level1(self, screen, clock):
+        pygame.mixer.init()
+        pygame.mixer.music.load("./Music/Level1.ogg")
+        pygame.mixer.music.play(loops = -1)
         player = Player()
 
         ADDENEMY = pygame.USEREVENT + 1

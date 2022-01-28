@@ -1,3 +1,4 @@
+from Colors import COLORS
 import pygame
 import random
 from pygame.constants import (
@@ -6,7 +7,6 @@ from pygame.constants import (
     K_LEFT,
     K_RIGHT,
     K_SPACE,
-    RLEACCEL
 )
 
 SCREEN_WIDTH = 1000
@@ -15,8 +15,10 @@ SCREEN_HEIGHT = 650
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.image.load("./assets/Ship_1_Red.png").convert()
-        #self.surf.set_colorkey((255,255,255),RLEACCEL)
+        #make the ship a random color (later add shop for them)
+        self.surf = list(COLORS.values())[random.randint(0,1)]
+        self.surf = self.surf.convert()
+        
         self.rect = self.surf.get_rect(center = (SCREEN_WIDTH/2 - self.surf.get_width()/2, SCREEN_HEIGHT/2))
         self.shootDelay = 20
         self.shootTimer = 0
@@ -51,7 +53,7 @@ class Player(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.surf = pygame.Surface((7,5))
+        self.surf = pygame.Surface((5,7))
         self.surf.fill((255,255,255))
         self.rect = self.surf.get_rect(center = pos)
         self.speed = 7
@@ -65,8 +67,7 @@ class Bullet(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.Surface((20, 20))
-        self.surf.fill((255,0,0))
+        self.surf = self.surf = pygame.image.load("./assets/Asteroid_1.png").convert()
         self.rect = self.surf.get_rect(center = (random.randint(0, SCREEN_WIDTH), 0 - random.randint(20, 100)))
         self.speedy = random.randint(5, 9)
         self.speedx = int(random.randint(-4, 4)/2)
@@ -75,3 +76,4 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.move_ip(self.speedx, self.speedy)
         if self.rect.top > SCREEN_HEIGHT:
             self.kill()
+

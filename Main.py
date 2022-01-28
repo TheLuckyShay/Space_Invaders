@@ -1,6 +1,6 @@
 import pygame
 from Screens import *
-from pygame.constants import (
+from pygame.constants import ( 
     QUIT,
     K_ESCAPE,
     KEYDOWN,
